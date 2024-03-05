@@ -1,0 +1,35 @@
+{
+  "name": "arraypress/edd-polyfills",
+  "description": "A collection of essential polyfills for Easy Digital Downloads (EDD) plugin development, filling gaps in core functionalities to streamline add-on creation.",
+  "homepage": "https://github.com/arraypress/edd-polyfills/",
+  "type": "library",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "David Sherlock",
+      "homepage": "https://arraypress.com/"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^7.4 || ^8.0"
+  },
+  "autoload": {
+    "files": [
+      "src/adjustments/Adjustments.php",
+      "src/customers/Customer_Addresses.php",
+      "src/customers/Customer_Email_Addresses.php",
+      "src/customers/Customers.php",
+      "src/downloads/Downloads.php",
+      "src/logs/API_Requests.php",
+      "src/logs/File_Downloads.php",
+      "src/logs/Logs.php",
+      "src/notes/Notes.php",
+      "src/orders/Order_Addresses.php",
+      "src/orders/Order_Adjustments.php",
+      "src/orders/Order_Items.php",
+      "src/orders/Order_Transactions.php",
+      "src/orders/Orders.php"
+    ]
+  }
+}
