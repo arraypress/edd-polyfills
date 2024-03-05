@@ -1,4 +1,4 @@
-# EDD Polyfills Library
+# Easy Digital Downloads Polyfills Library
 
 The EDD Polyfills Library aims to bridge the functionality gap in Easy Digital Downloads (EDD) 3.x by providing
 essential polyfills for various features that are missing or incomplete in the core EDD plugin. Designed to seamlessly
