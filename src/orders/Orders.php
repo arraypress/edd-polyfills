@@ -56,3 +56,51 @@ if ( ! function_exists( 'edd_order_exists' ) ) {
 		return (bool) $found;
 	}
 }
+
+if ( ! function_exists( 'edd_order_exists_by_key' ) ) {
+	/**
+	 * Check if an order with the given payment key exists.
+	 *
+	 * @param string $payment_key The payment key of the order to check.
+	 * @param bool   $use_cache   Whether to use cache for the lookup. Default true.
+	 *
+	 * @return bool True if the order exists, false otherwise.
+	 */
+	function edd_order_exists_by_key( string $payment_key = '', bool $use_cache = true ): bool {
+
+		// Bail if no payment key
+		if ( empty( $payment_key ) ) {
+			return false;
+		}
+
+		// Generate a cache key for the query result.
+		$cache_key = 'order_exists_by_key_' . $payment_key;
+		$found     = false;
+
+		// Attempt to retrieve the query result from the cache if caching is enabled.
+		if ( $use_cache ) {
+			$found = get_transient( $cache_key );
+		}
+
+		// If the query result is not found in the cache or caching is disabled, execute the query.
+		if ( $found === false ) {
+			global $wpdb;
+
+			// Execute the query to check if the order exists.
+			$found = $wpdb->get_var(
+				$wpdb->prepare(
+					"SELECT id FROM {$wpdb->edd_orders} WHERE payment_key = %s LIMIT 1;",
+					$payment_key
+				)
+			);
+
+			// Store the query result in the cache with an expiration time of one hour if caching is enabled.
+			if ( $use_cache && $found ) {
+				set_transient( $cache_key, $found, HOUR_IN_SECONDS );
+			}
+		}
+
+		// Return true if the order exists (found is not null or false), false otherwise.
+		return ! empty( $found );
+	}
+}
