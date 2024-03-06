@@ -74,7 +74,7 @@ if ( ! function_exists( 'edd_order_exists_by_key' ) ) {
 		}
 
 		// Generate a cache key for the query result.
-		$cache_key = 'order_exists_by_key_' . $payment_key;
+		$cache_key = 'edd_order_exists_by_key_' . $payment_key;
 		$found     = false;
 
 		// Attempt to retrieve the query result from the cache if caching is enabled.

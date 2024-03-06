@@ -148,6 +148,21 @@ multiple contact emails, which can be essential for communication, marketing, an
 **Returns**: An array of email addresses associated with the customer. If the customer does not exist or no emails are
 associated, an empty array is returned.
 
+### `edd_get_customer_id_by_user_id`
+
+Get the customer ID associated with a user ID. This function facilitates linking user accounts to their corresponding
+customer records in the database, enabling personalized interactions and streamlined customer service operations.
+
+**Parameters**:
+
+- `$user_id`: The user ID. If not specified or if 0, the function attempts to use the current logged-in user's ID.
+  Default is 0.
+- `$use_cache`: Whether to use cache for the lookup. Default is true.
+
+**Returns**: The customer ID or `false` if the customer ID is not found. This return value is crucial for functions that
+require a customer ID to proceed with further processing, such as retrieving customer-specific order histories or
+personalizing the shopping experience.
+
 ## Download Polyfills
 
 ### `edd_get_download_file_field`
@@ -434,6 +449,21 @@ order before proceeding with operations or analyses related to it, ensuring data
 - `$order_id`: The ID of the order entry to check.
 
 **Returns**: `true` if the order entry exists in the database, `false` otherwise.
+
+### `edd_order_exists_by_key`
+
+Check if an order with the given payment key exists. This function is useful for validating if a specific order is
+already present in the system based on its unique payment key, aiding in preventing duplicate entries and ensuring
+accurate order tracking.
+
+**Parameters**:
+
+- `$payment_key`: The payment key of the order to check. Default is an empty string.
+- `$use_cache`: Whether to use cache for the lookup. Default is true.
+
+**Returns**: `true` if the order exists, `false` otherwise. This helps in quickly determining the existence of an order
+without needing to perform a full database search, especially beneficial for high-traffic sites where performance
+optimization is critical.
 
 ## Contributions
 
