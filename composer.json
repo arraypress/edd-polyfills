@@ -21,6 +21,8 @@
       "src/customers/Customer_Email_Addresses.php",
       "src/customers/Customers.php",
       "src/downloads/Downloads.php",
+      "src/downloads/Download_Files.php",
+      "src/downloads/Download_Prices.php",
       "src/logs/API_Requests.php",
       "src/logs/File_Downloads.php",
       "src/logs/Logs.php",
